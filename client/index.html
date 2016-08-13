@@ -1,0 +1,53 @@
+<!doctype html>
+
+<html ng-app="calendarApp">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="angular/angular.min.js"></script>
+  </head>
+
+  <body>
+
+    <main ng-controller="EventController as event">
+
+      <header>
+        <h1>Calendar App</h1>
+      </header>
+
+      <section class="create-event">
+        <form class="event-form">
+          <input type="text" name="eventTitle" placeholder="Event Title" ng-model="event.title">
+          <input type="text" name="eventDescription" placeholder="Event Description" ng-model="event.description">
+          <button type="button" ng-click="event.create()">Create Event</button>
+        </form>
+      </section>
+
+      <section class="events-container">
+        <article class="events" ng-repeat="item in event.events" ng-click="event.edit(item)">
+          <h3>{{ item.title }}</h3>
+          <p>
+            {{ item.description }}
+          </p>
+        </article>
+        <article ng-show="event.change">
+          <form class="edit-form">
+            <input type="text" name="eventTitle" placeholder="Event Title" ng-model="event.change.title">
+            <input type="text" name="eventDescription" placeholder="Event Description" ng-model="event.change.description">
+            <button type="button" ng-click="event.update(event.change)">Update Event</button>
+            <button ng-click="event.remove(event.change)">Remove Event</button>
+          </form>
+        </article>
+      </section>
+
+    </main>
+
+
+    <script src="js/calendar.module.js"></script>
+    <script src="js/event.factory.js"></script>
+    <script src="js/event.controller.js"></script>
+  </body>
+
+</html>
