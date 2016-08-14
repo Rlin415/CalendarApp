@@ -13,33 +13,64 @@
 
     <main ng-controller="EventController as event">
 
-      <header>
-        <h1>Calendar App</h1>
-      </header>
+      <h1>Calendar App</h1>
 
       <section class="create-event">
+
+        <h2>Create Event</h2>
+
         <form class="event-form">
-          <input type="text" name="eventTitle" placeholder="Event Title" ng-model="event.title">
-          <input type="text" name="eventDescription" placeholder="Event Description" ng-model="event.description">
-          <button type="button" ng-click="event.create()">Create Event</button>
+          <p>
+            <label for="title">
+              <input type="text" name="title" id="title" placeholder="Event Title" ng-model="event.title">
+            </label>
+          </p>
+          <p>
+            <label for="description">
+              <input type="text" name="description" id="description" placeholder="Event Description" ng-model="event.description">
+            </label>
+          </p>
+          <p>
+            <button type="button" ng-click="event.create()">Create</button>
+          </p>
         </form>
+
       </section>
 
-      <section class="events-container">
-        <article class="events" ng-repeat="item in event.events" ng-click="event.edit(item)">
+      <section class="events">
+
+        <h2>Your Events</h2>
+
+        <article class="event" ng-repeat="item in event.events" ng-click="event.edit(item)">
           <h3>{{ item.title }}</h3>
           <p>
             {{ item.description }}
           </p>
         </article>
-        <article ng-show="event.change">
-          <form class="edit-form">
-            <input type="text" name="eventTitle" placeholder="Event Title" ng-model="event.change.title">
-            <input type="text" name="eventDescription" placeholder="Event Description" ng-model="event.change.description">
-            <button type="button" ng-click="event.update(event.change)">Update Event</button>
-            <button ng-click="event.remove(event.change)">Remove Event</button>
-          </form>
-        </article>
+
+      </section>
+
+      <section class="edit-event" ng-show="event.change">
+
+        <h2>Edit Event</h2>
+
+        <form class="edit-form">
+          <p>
+            <label for="edit-title">
+              <input type="text" name="edit-title" id="edit-title" placeholder="Event Title" ng-model="event.change.title">
+            </label>
+          </p>
+          <p>
+            <label for="edit-description">
+              <input type="text" name="edit-description" id="edit-description" placeholder="Event Description" ng-model="event.change.description">
+            </label>
+          </p>
+          <p>
+            <button type="button" ng-click="event.update(event.change)">Update</button>
+            <button ng-click="event.remove(event.change)">Remove</button>
+          </p>
+        </form>
+
       </section>
 
     </main>
