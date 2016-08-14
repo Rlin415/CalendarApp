@@ -1,3 +1,11 @@
-.events {
+main h1 {
+  color: #3399FF;
+}
+
+section h2 {
+  color: #333399;
+}
+
+.event {
   cursor: pointer;
 }
