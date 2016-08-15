@@ -21,9 +21,6 @@
       })
       .then(function(res) {
         return res.data;
-      })
-      .catch(function(err) {
-        console.error(err);
       });
     }
 
@@ -35,9 +32,6 @@
       })
       .then(function(res) {
         return res.data;
-      })
-      .catch(function(err) {
-        console.error(err);
       });
     }
 
@@ -46,9 +40,6 @@
         method: 'PUT',
         url: '/api/event',
         data: event
-      })
-      .catch(function(err) {
-        console.error(err);
       });
     }
 
@@ -56,11 +47,9 @@
       return $http({
         method: 'DELETE',
         url: '/api/event/' + id
-      })
-      .catch(function(err) {
-        console.error(err);
       });
     }
+
   }
 
 })();

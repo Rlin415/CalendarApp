@@ -21,6 +21,9 @@
       eventService.getEvents()
         .then(function(events) {
           vm.events = events;
+        })
+        .catch(function(err) {
+          console.error(err);
         });
     }
 
@@ -33,6 +36,9 @@
         vm.events[event._id] = event;
         vm.title = null;
         vm.description = null;
+      })
+      .catch(function(err) {
+        console.error(err);
       });
     }
 
@@ -45,6 +51,9 @@
         .then(function() {
           delete vm.events[event._id];
           vm.change = null;
+        })
+        .catch(function(err) {
+          console.error(err);
         });
     }
 
@@ -52,6 +61,9 @@
       eventService.updateEvent(event)
         .then(function() {
           vm.change = null;
+        })
+        .catch(function(err) {
+          console.error(err);
         });
     }
 
