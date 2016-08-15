@@ -1,11 +1,22 @@
-main h1 {
+.main-heading {
   color: #3399FF;
 }
 
-section h2 {
+.section-heading {
   color: #333399;
+}
+
+.main-heading, .create-event, .edit-event {
+  text-align: center;
 }
 
 .event {
   cursor: pointer;
+  border-style: solid;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.event-content {
+  margin-left: 5px;
 }
