@@ -3,9 +3,12 @@
   angular.module('calendarApp')
     .controller('EventController', EventController);
 
-  function EventController($scope, eventService) {
+  function EventController(eventService) {
     var vm = this;
+
     vm.events = {};
+    vm.title = null;
+    vm.description = null;
     vm.change = null;
     vm.create = create;
     vm.edit = edit;
@@ -28,6 +31,8 @@
       })
       .then(function(event) {
         vm.events[event._id] = event;
+        vm.title = null;
+        vm.description = null;
       });
     }
 
@@ -36,16 +41,18 @@
     }
 
     function remove(event) {
-      vm.change = null;
       eventService.deleteEvent(event._id)
         .then(function() {
           delete vm.events[event._id];
+          vm.change = null;
         });
     }
 
     function update(event) {
-      vm.change = null;
-      eventService.updateEvent(event);
+      eventService.updateEvent(event)
+        .then(function() {
+          vm.change = null;
+        });
     }
 
   }
