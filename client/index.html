@@ -13,11 +13,11 @@
 
     <main ng-controller="EventController as event">
 
-      <h1>Calendar App</h1>
+      <h1 class="main-heading">Calendar App</h1>
 
       <section class="create-event">
 
-        <h2>Create Event</h2>
+        <h2 class="section-heading">Create Event</h2>
 
         <form class="event-form">
           <p>
@@ -39,18 +39,20 @@
 
       <section class="events">
 
-        <h2>Your Events</h2>
+        <h2 class="section-heading">Your Events</h2>
 
         <article class="event" ng-repeat="item in event.events" ng-click="event.edit(item)" ng-cloak>
-          <h3>{{ item.title }}</h3>
-          <p>{{ item.description }}</p>
+          <div class="event-content">
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.description }}</p>
+          </div>
         </article>
 
       </section>
 
       <section class="edit-event" ng-cloak ng-show="event.change">
 
-        <h2>Edit Event</h2>
+        <h2 class="section-heading">Edit Event</h2>
 
         <form class="edit-form">
           <p>
