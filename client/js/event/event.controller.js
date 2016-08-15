@@ -4,63 +4,63 @@
     .controller('EventController', EventController);
 
   function EventController(eventService) {
-    var vm = this;
+    var eventVm = this;
 
-    vm.events = {};
-    vm.title = null;
-    vm.description = null;
-    vm.change = null;
-    vm.create = create;
-    vm.edit = edit;
-    vm.update = update;
-    vm.remove = remove;
+    eventVm.events = {};
+    eventVm.title = null;
+    eventVm.description = null;
+    eventVm.change = null;
+    eventVm.createEvent = createEvent;
+    eventVm.editEvent = editEvent;
+    eventVm.updateEvent = updateEvent;
+    eventVm.removeEvent = removeEvent;
 
-    get();
+    getEvents();
 
-    function get() {
+    function getEvents() {
       eventService.getEvents()
         .then(function(events) {
-          vm.events = events;
+          eventVm.events = events;
         })
         .catch(function(err) {
           console.error(err);
         });
     }
 
-    function create() {
+    function createEvent() {
       eventService.createEvent({
-        title: vm.title,
-        description: vm.description
+        title: eventVm.title,
+        description: eventVm.description
       })
       .then(function(event) {
-        vm.events[event._id] = event;
-        vm.title = null;
-        vm.description = null;
+        eventVm.events[event._id] = event;
+        eventVm.title = null;
+        eventVm.description = null;
       })
       .catch(function(err) {
         console.error(err);
       });
     }
 
-    function edit(item) {
-      vm.change = item;
+    function editEvent(item) {
+      eventVm.change = item;
     }
 
-    function remove(event) {
+    function removeEvent(event) {
       eventService.deleteEvent(event._id)
         .then(function() {
-          delete vm.events[event._id];
-          vm.change = null;
+          delete eventVm.events[event._id];
+          eventVm.change = null;
         })
         .catch(function(err) {
           console.error(err);
         });
     }
 
-    function update(event) {
+    function updateEvent(event) {
       eventService.updateEvent(event)
         .then(function() {
-          vm.change = null;
+          eventVm.change = null;
         })
         .catch(function(err) {
           console.error(err);

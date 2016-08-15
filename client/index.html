@@ -11,7 +11,7 @@
 
   <body>
 
-    <main ng-controller="EventController as event">
+    <main ng-controller="EventController as eventVm">
 
       <h1 class="main-heading">Calendar App</h1>
 
@@ -22,16 +22,16 @@
         <form class="event-form">
           <p>
             <label for="title">
-              <input type="text" name="title" id="title" placeholder="Event Title" ng-model="event.title">
+              <input type="text" name="title" id="title" placeholder="Event Title" ng-model="eventVm.title">
             </label>
           </p>
           <p>
             <label for="description">
-              <input type="text" name="description" id="description" placeholder="Event Description" ng-model="event.description">
+              <input type="text" name="description" id="description" placeholder="Event Description" ng-model="eventVm.description">
             </label>
           </p>
           <p>
-            <button type="button" ng-click="event.create()">Create</button>
+            <button type="button" ng-click="eventVm.createEvent()">Create</button>
           </p>
         </form>
 
@@ -41,7 +41,7 @@
 
         <h2 class="section-heading">Your Events</h2>
 
-        <article class="event" ng-repeat="item in event.events" ng-click="event.edit(item)" ng-cloak>
+        <article class="event" ng-repeat="item in eventVm.events" ng-click="eventVm.editEvent(item)" ng-cloak>
           <div class="event-content">
             <h3>{{ item.title }}</h3>
             <p>{{ item.description }}</p>
@@ -50,24 +50,24 @@
 
       </section>
 
-      <section class="edit-event" ng-cloak ng-show="event.change">
+      <section class="edit-event" ng-cloak ng-show="eventVm.change">
 
         <h2 class="section-heading">Edit Event</h2>
 
         <form class="edit-form">
           <p>
             <label for="edit-title">
-              <input type="text" name="edit-title" id="edit-title" placeholder="Event Title" ng-model="event.change.title">
+              <input type="text" name="edit-title" id="edit-title" placeholder="Event Title" ng-model="eventVm.change.title">
             </label>
           </p>
           <p>
             <label for="edit-description">
-              <input type="text" name="edit-description" id="edit-description" placeholder="Event Description" ng-model="event.change.description">
+              <input type="text" name="edit-description" id="edit-description" placeholder="Event Description" ng-model="eventVm.change.description">
             </label>
           </p>
           <p>
-            <button type="button" ng-click="event.update(event.change)">Update</button>
-            <button ng-click="event.remove(event.change)">Remove</button>
+            <button type="button" ng-click="eventVm.updateEvent(eventVm.change)">Update</button>
+            <button ng-click="eventVm.removeEvent(eventVm.change)">Remove</button>
           </p>
         </form>
 
