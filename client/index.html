@@ -41,16 +41,14 @@
 
         <h2>Your Events</h2>
 
-        <article class="event" ng-repeat="item in event.events" ng-click="event.edit(item)">
+        <article class="event" ng-repeat="item in event.events" ng-click="event.edit(item)" ng-cloak>
           <h3>{{ item.title }}</h3>
-          <p>
-            {{ item.description }}
-          </p>
+          <p>{{ item.description }}</p>
         </article>
 
       </section>
 
-      <section class="edit-event" ng-show="event.change">
+      <section class="edit-event" ng-cloak ng-show="event.change">
 
         <h2>Edit Event</h2>
 
@@ -74,7 +72,6 @@
       </section>
 
     </main>
-
 
     <script src="js/calendar.module.js"></script>
     <script src="js/event.factory.js"></script>
