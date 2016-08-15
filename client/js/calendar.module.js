@@ -1,1 +1,3 @@
-angular.module('calendarApp', []);
+angular.module('calendar', [
+  'calendar.event'
+]);

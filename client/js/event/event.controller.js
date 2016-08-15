@@ -1,6 +1,6 @@
 (function() {
 
-  angular.module('calendarApp')
+  angular.module('calendar.event')
     .controller('EventController', EventController);
 
   function EventController(eventService) {

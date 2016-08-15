@@ -1,6 +1,6 @@
 (function() {
 
-  angular.module('calendarApp')
+  angular.module('calendar.event')
     .factory('eventService', eventService);
 
 
